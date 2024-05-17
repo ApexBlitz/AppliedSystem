@@ -5,7 +5,8 @@ import org.junit.Test;
 import Model.GameBoard;
 
 public class GameBoardTest {
-    
+
+    // TEST 4
     @Test
     public void testIsFull() {
         // Arrange
@@ -22,7 +23,11 @@ public class GameBoardTest {
         // Assert
         assertTrue(gameBoard.isFull()); // Control if board is full
     }
+
+
+
     
+    // TEST 1
     @Test
     public void testPlayMove() {
         // Arrange
@@ -39,3 +44,63 @@ public class GameBoardTest {
     }
 
 }
+
+
+
+
+// TEST 2
+    @Test
+    public void testTurnAnnouncement() {
+        // Arrange
+        GameBoard gameBoard = new GameBoard(6, 7);
+        Player player1 = new HumanPlayer("Player 1", GameBoard.RED);
+        Player player2 = new HumanPlayer("Player 2", GameBoard.YELLOW);
+
+        // Act
+        gameBoard.playMove(3, player1.getDiscColor());
+        
+        // Assert
+        assertEquals(GameBoard.YELLOW, gameBoard.getNextPlayerColor());
+
+        // Act
+        gameBoard.playMove(3, player2.getDiscColor());
+        
+        // Assert
+        assertEquals(GameBoard.RED, gameBoard.getNextPlayerColor());
+    }
+
+
+
+
+// TEST 3
+    @Test
+    public void testPlaceOnFullColumn() {
+        // Arrange
+        GameBoard gameBoard = new GameBoard(6, 7);
+        
+        // Act
+        for (int row = 0; row < 6; row++) {
+            gameBoard.playMove(3, GameBoard.RED);
+        }
+        
+        // Assert
+        assertFalse(gameBoard.playMove(3, GameBoard.YELLOW));
+    }
+
+
+
+
+ // TEST 5
+    @Test
+    public void testEndGame() {
+        // Arrange
+        GameBoard gameBoard = new GameBoard(6, 7);
+        
+        // Act
+        for (int i = 0; i < 4; i++) {
+            gameBoard.playMove(i, GameBoard.RED);
+        }
+        
+        // Assert
+        assertTrue(gameBoard.checkWin(GameBoard.RED));
+    }
