@@ -6,7 +6,7 @@ import Model.GameBoard;
 
 public class GameBoardTest {
 
-    // TEST 4
+// TEST 4
     @Test
     public void testIsFull() {
         // Arrange
@@ -27,7 +27,7 @@ public class GameBoardTest {
 
 
     
-    // TEST 1
+// TEST 1
     @Test
     public void testPlayMove() {
         // Arrange
